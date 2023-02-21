@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+   server:
+      build: ./Server
+      restart: always
+      ports:
+         - "8080:80"
+      environment:
+         - PORT=5000
+         - USERNAME=Tatiana
+      stdin_open: true 
+      tty: true
+   client:
+      build: ./Client
+      restart: "no"
+      depends_on:
+         - server
+      environment:
+         - PORT=5000
+      stdin_open: true 
+      tty: true
+
+
+
+       
